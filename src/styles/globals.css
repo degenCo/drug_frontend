@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'sans-font';
+    src: url('../../public/fonts/ProductSansInfanity.ttf');
+}
+
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+text,
+input,
+label,
+span,
+table,
+tr,
+td,
+textarea,
+th {
+    font-family: 'sans-font' !important;
+    color: '#18232A';
+}
+
+.mantine-AppShell-body, .mantine-AppShell-main {
+    background: rgba(199, 199, 199, 0.1)
+}
+.mantine-Header-root {
+    padding: 10px;
+}
+
+#paginationWrapper ul{
+    display: flex;
+}
+
+#paginationWrapper ul li a{
+    box-sizing: border-box;
+    display: flex;
+    padding: 10px 15px 10px 15px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: .375rem;
+    --tw-border-opacity: 1;
+    border-color: none;
+    text-align: center;
+    font-family: Mona Sans, sans-serif;
+    font-size: 14px;
+    line-height: 1.5rem;
+    --tw-text-opacity: 1;
+    text-decoration-line: none;
+    background-color: white;
+}
+
+#paginationWrapper ul li {
+    color: gray;
+    margin-left: 10px;
+}
+
+.selected {
+    color: #6B9FFF !important;
+    font-weight: bold;
+}
