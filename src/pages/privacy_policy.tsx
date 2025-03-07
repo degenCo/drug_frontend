@@ -9,7 +9,8 @@ const PrivacyPolicy = () => {
             <SearchInput />
             <Title 
                 title="Privacy Policy for Pharmacy"
-                update_date="2/25/2025"
+                summary="Last updated: 2/25/2025"
+                gradient_title="wiki"
             />
             <Box mt={30}>
                 <PrivacyList />
