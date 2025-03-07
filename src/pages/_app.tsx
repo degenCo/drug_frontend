@@ -13,8 +13,8 @@ import HomeContext from "@/state/index.context";
 import Layout from "@/components/layouts";
 import { Notifications } from "@mantine/notifications";
 import { SessionProvider } from "next-auth/react";
-import { QueryParamProvider } from 'use-query-params';
-import NextAdapterPages from 'next-query-params/pages';
+// import { QueryParamProvider } from 'use-query-params';
+// import NextAdapterPages from 'next-query-params/pages';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isClient, setIsClient] = useState(false);
@@ -41,7 +41,6 @@ export default function App({ Component, pageProps }: AppProps) {
   };
   return (
     isClient && (
-      <QueryParamProvider adapter={NextAdapterPages}>
           <SessionProvider session={pageProps.session}>
             <HomeContext.Provider
               value={{
@@ -61,7 +60,6 @@ export default function App({ Component, pageProps }: AppProps) {
               </ColorSchemeProvider>
             </HomeContext.Provider>
           </SessionProvider>
-      </QueryParamProvider>
     )
   );
 }
