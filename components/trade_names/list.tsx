@@ -1,12 +1,12 @@
 import { getData } from "@/api/trade_names";
-import { Box, Flex, LoadingOverlay, Table, Text } from "@mantine/core";
+import { Box, Flex, LoadingOverlay, Skeleton, Table, Text } from "@mantine/core";
 import { FC, useEffect, useState } from "react";
 import Pagination from "../utils/pagination";
 
 interface Props {
     setDetail: (detail: any) => void
 }
-const List:FC<Props> = ({
+const List: FC<Props> = ({
     setDetail
 }) => {
 
@@ -29,10 +29,25 @@ const List:FC<Props> = ({
         setIsLoading(false);
     }
 
+    const Loader = () => {
+        return (
+            <Box>
+                {Array.from({ length: perPage }).map((_, index) => (
+                    <Flex mt={15} gap={20}>
+                        <Skeleton key={index} variant="rectangular" width='30%' height='20px' style={{ marginBottom: '10px' }} />
+                        <Skeleton key={index} variant="rectangular" width='70%' height='20px' style={{ marginBottom: '10px' }} />
+                    </Flex>
+                ))}
+            </Box>
+        )
+    }
     useEffect(() => {
         fetchData();
     }, [perPage, pageIndex])
+
+
     return (
+        isLoading ? Loader() :
         <Box className="min-h-full">
             <Box>
                 <Flex

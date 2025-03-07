@@ -3,7 +3,7 @@ import Detail from "@/components/ingredients/detail";
 import Title from "@/components/layouts/title";
 import Pagination from "@/components/utils/pagination";
 import SearchInput from "@/components/utils/search_input";
-import { Box, Flex, Grid, LoadingOverlay, Table, Text } from "@mantine/core";
+import { Box, Flex, Grid, LoadingOverlay, Skeleton, Table, Text } from "@mantine/core";
 import { IconCircleFilled } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 
@@ -37,6 +37,19 @@ const Ingredents = () => {
 
     }, [showDetail])
 
+    const Loader = () => {
+        return (
+            <Box>
+                {Array.from({ length: perPage }).map((_, index) => (
+                    <Flex mt={15} gap={20}>
+                        <Skeleton key={index} variant="rectangular" width='50%' height='20px' style={{ marginBottom: '10px' }} />
+                        <Skeleton key={index} variant="rectangular" width='50%' height='20px' style={{ marginBottom: '10px' }} />
+                    </Flex>
+                ))}
+            </Box>
+        )
+    }
+
     return (
         <Box>
             <SearchInput />
@@ -44,9 +57,10 @@ const Ingredents = () => {
             {
                 showDetail ?
                     <Detail data={detail} /> :
+                    isLoading ? Loader() :
                     <Box>
                         <Title
-                            title="All Pharmaceutical Ingredients"
+                            title="All Pharmaceutical   Ingredients"
                             gradient_title="Ingredients"
                             summary="Active pharmaceutical ingredients online database"
                         />
@@ -93,7 +107,6 @@ const Ingredents = () => {
                     </Box>
             }
 
-            <LoadingOverlay visible={isLoading} />
         </Box>
     )
 }

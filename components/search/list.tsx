@@ -1,6 +1,6 @@
 import { getData } from "@/api/search";
 import Pagination from "@/components/utils/pagination";
-import { Box, Flex, LoadingOverlay, Text, Highlight } from "@mantine/core";
+import { Box, Flex, LoadingOverlay, Text, Highlight, Skeleton } from "@mantine/core";
 import { FC, useEffect, useState } from "react";
 
 interface Props {
@@ -28,6 +28,19 @@ const List: FC<Props> = ({
         }
     }, [searchValue, pageCount, pageIndex])
 
+    const Loader = () => {
+        return (
+            <Box>
+                {Array.from({ length: 12 }).map((_, index) => (
+                    <Box mt={15}>
+                        <Skeleton key={index} variant="rectangular" width='100%' height='20px' style={{ marginBottom: '10px' }} />
+                        <Skeleton key={index} variant="rectangular" width='100%' height='20px' style={{ marginBottom: '10px' }} />
+                    </Box>
+                ))}
+            </Box>
+        )
+    }
+
     const fetchData = async () => {
         setIsLoading(true);
         try {
@@ -47,6 +60,7 @@ const List: FC<Props> = ({
 
     }
     return (
+        isLoading ? Loader() :
         <Box className="min-h-full">
             <Flex
                 justify='space-between'
@@ -55,8 +69,8 @@ const List: FC<Props> = ({
                 className="border-b border-grey-dark"
             >
                 <Flex gap={5} align='baseline'>
-                    <Text size={17}>{totalPageCount}</Text>
-                    <Text size={17} className="opacity-50">result of </Text>
+                    <Text size={17}>{totalPageCount * perPage}</Text>
+                    <Text size={17} className="opacity-50">result of </Text>    
                     <Text size={17}>{searchValue}</Text>
                 </Flex>
                 <Pagination
@@ -101,7 +115,6 @@ const List: FC<Props> = ({
                 totalPageCount={totalPageCount}
                 perPage={perPage}
             />
-            <LoadingOverlay visible={isLoading} />
         </Box>
     )
 }

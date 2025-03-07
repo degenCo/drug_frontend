@@ -68,7 +68,8 @@ const ConditionList = () => {
         <Box>
             <Title
                 title="Terms & Conditions for Pharmacy"
-                update_date="2/25/2025"
+                summary="Last updated: 2/25/2025"
+                gradient_title="wiki"
             />
             <Box mt={24}>
                 <Text className="opacity-50">Welcome to Pharmacy.wiki ("Site"). By accessing or using this Site, you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use the Site.</Text>

@@ -3,7 +3,7 @@ export const PAGES = [
   { name: 'Home', path: '/home' },
   { name: 'Trade names', path: '/trade_names' },
   { name: 'Ingredients', path: '/ingredients' },
-  { name: 'Manufacturers', path: '/manufactuers' },
+  { name: 'Manufacturers', path: '/manufacturers' },
   { name: 'Teams & conditions', path: '/terms_conditions' },
   { name: 'Privacy policy', path: '/privacy_policy' },
   { name: 'About us', path: '/about_us' },
